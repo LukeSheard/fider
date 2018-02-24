@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"encoding/json"
 
-	"github.com/lib/pq"
+	"github.com/go-sql-driver/mysql"
 )
 
 // NullInt representa a nullable integer
@@ -35,7 +35,7 @@ func (r NullString) MarshalJSON() ([]byte, error) {
 
 // NullTime representa a nullable time.Time
 type NullTime struct {
-	pq.NullTime
+	mysql.NullTime
 }
 
 // MarshalJSON interface redefinition

@@ -14,8 +14,8 @@ import (
 	"github.com/mattes/migrate"
 
 	//required
-	_ "github.com/lib/pq"
-	_ "github.com/mattes/migrate/database/postgres"
+	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/mattes/migrate/database/mysql"
 	_ "github.com/mattes/migrate/source/file"
 )
 
@@ -26,7 +26,7 @@ func New() *Database {
 
 // NewWithLogger creates a new Database instance with logging or panic
 func NewWithLogger(logger log.Logger) *Database {
-	conn, err := sql.Open("postgres", env.MustGet("DATABASE_URL"))
+	conn, err := sql.Open("mysql", env.MustGet("DATABASE_URL"))
 	conn.SetMaxIdleConns(20)
 	conn.SetMaxOpenConns(50)
 	if err != nil {
